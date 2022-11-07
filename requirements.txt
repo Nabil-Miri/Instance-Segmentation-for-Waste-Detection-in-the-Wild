@@ -1,6 +1,7 @@
 pyyaml==5.1
 torch #==1.8.0
 torchvision #==0.9.0
+<<<<<<< HEAD
 # git+https://github.com/facebookresearch/detectron2.git #detectron2
 opencv-contrib-python==4.5.5.62
 #fvcore
@@ -11,3 +12,7 @@ opencv-contrib-python==4.5.5.62
 #git+https://github.com/waleedka/coco.git#egg=pycocotools&subdirectory=PythonAPI
 
 git+https://github.com/facebookresearch/detectron2.git #detectron2
+=======
+--extra-index-url https://dl.fbaipublicfiles.com/detectron2/wheels/cu113/torch1.10/index.html
+opencv-contrib-python-headless
+>>>>>>> 780039030919de911deda37987588dc39597ce38
