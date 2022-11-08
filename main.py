@@ -49,16 +49,16 @@ cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
 cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
 cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512 #128
 
-#predictor = DefaultPredictor(cfg)
-#outputs = predictor(im)
+predictor = DefaultPredictor(cfg)
+outputs = predictor(im)
 
 st.write('Writing pred_classes/pred_boxes output ===============')
-#st.write(outputs["instances"].pred_classes)
-#st.write(outputs["instances"].pred_boxes)
+st.write(outputs["instances"].pred_classes)
+st.write(outputs["instances"].pred_boxes)
 
-#st.write('Using Vizualizer to draw the predictions on Image')
+st.write('Using Vizualizer to draw the predictions on Image')
 
-#v = Visualizer(im[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMAGE_BW, # removes the colors of unsegmented pixels
-#                scale=1.2)
-#out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
-#st.image(out.get_image()[:, :, ::-1])
+v = Visualizer(im[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMAGE_BW, # removes the colors of unsegmented pixels
+                scale=1.2)
+out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
+st.image(out.get_image()[:, :, ::-1])
