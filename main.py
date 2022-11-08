@@ -88,4 +88,4 @@ else:
                     scale=1.2)
     out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
     st.image(out.get_image()[:, :, ::-1])
-''''''
+'''
