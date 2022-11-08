@@ -10,7 +10,7 @@ from detectron2.config import get_cfg
 from detectron2.utils.visualizer import Visualizer, ColorMode
 from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.data.catalog import Metadata
-
+'''
 #_dataset_metadata_train = MetadataCatalog.get('train')
 #my_metadata = Metadata()
 #my_metadata.set(thing_classes=['metals_and_plastics', 'other', 'non-recyclable', 'glass', 'paper', 'bio', 'unknown'])
@@ -29,7 +29,7 @@ st.image('assets/img.png')
 # import some common detectron2 utilities
 
 st.write('\n')
-'''
+
 st.title('Testing the Zoo Model')
 st.write('Test image')
 im = cv2.imread("assets/test.JPG")
