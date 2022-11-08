@@ -31,6 +31,9 @@ st.write('\n')
 # # showing image
 # st.image('assets/test.JPG')
 
+def load_model():
+    cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
+
 # Import some common detectron2 utilities
 NUM_CLASSES = 7
 #Then, we create a detectron2 config and a detectron2 `DefaultPredictor` to run inference on this image.
@@ -40,7 +43,7 @@ cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rc
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # set threshold for this model
 cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
 # Custom Trained Model
-cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
+load_model()
 cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512 #128
 
 # minimum image size for the train set
