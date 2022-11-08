@@ -10,7 +10,7 @@ from detectron2.config import get_cfg
 from detectron2.utils.visualizer import Visualizer, ColorMode
 from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.data.catalog import Metadata
-'''
+''''''
 _dataset_metadata_train = MetadataCatalog.get('train')
 my_metadata = Metadata()
 my_metadata.set(thing_classes=['metals_and_plastics', 'other', 'non-recyclable', 'glass', 'paper', 'bio', 'unknown'])
@@ -88,4 +88,4 @@ else:
                     scale=1.2)
     out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
     st.image(out.get_image()[:, :, ::-1])
-'''
+''''''
