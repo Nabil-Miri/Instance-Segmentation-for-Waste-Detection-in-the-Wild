@@ -25,6 +25,15 @@ st.write('What is Detectron2?')
 st.write('Detectron2 is Facebook AI Researchs next generation software system that implements state-of-the-art object detection algorithms. It is a ground-up rewrite of the previous version, Detectron, and it originates from maskrcnn-benchmark.')
 st.image('assets/img.png')
 
+from PIL import Image, ImageOps
+# Upload images
+st.write('Upload image')
+upload = st.file_uploader("Please upload an image", type=["jpg","png", "jpeg", "heif"])
+if upload is None:
+    st.text("Please upload an image")
+else:
+    image = Image.open(upload)
+    st.image(image, use_column_width=True)
 
 # import some common detectron2 utilities
 
@@ -60,6 +69,22 @@ st.write(outputs["instances"].pred_boxes)
 st.write('Using Vizualizer to draw the predictions on Image')
 
 v = Visualizer(im[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMAGE_BW, # removes the colors of unsegmented pixels
+                scale=1.2)
+out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
+st.image(out.get_image()[:, :, ::-1])
+
+
+###
+img_array = np.array(image)
+outputs = predictor(img_array)
+
+st.write('Writing pred_classes/pred_boxes output ===============')
+st.write(outputs["instances"].pred_classes)
+st.write(outputs["instances"].pred_boxes)
+
+st.write('Using Vizualizer to draw the predictions on Image')
+
+v = Visualizer(img_array[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMAGE_BW, # removes the colors of unsegmented pixels
                 scale=1.2)
 out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
 st.image(out.get_image()[:, :, ::-1])
