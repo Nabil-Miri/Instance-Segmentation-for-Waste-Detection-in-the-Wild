@@ -52,7 +52,7 @@ cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # set threshold for this model
 #predictor = DefaultPredictor(cfg)
 #outputs = predictor(im)
 
-#st.write('Writing pred_classes/pred_boxes output')
+st.write('Writing pred_classes/pred_boxes output')
 #st.write(outputs["instances"].pred_classes)
 #st.write(outputs["instances"].pred_boxes)
 
