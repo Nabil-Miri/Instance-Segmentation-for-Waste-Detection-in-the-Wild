@@ -6,8 +6,8 @@ git+https://github.com/facebookresearch/detectron2.git #detectron2
 
 opencv-contrib-python==4.5.5.62
 
-RUN apt-get update
-RUN apt-get install ffmpeg libsm6 libxext6  -y
+apt-get update
+apt-get install ffmpeg libsm6 libxext6  -y
 
 #fvcore
 #cloudpickle
