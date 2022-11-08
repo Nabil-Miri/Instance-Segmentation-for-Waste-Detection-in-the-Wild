@@ -48,7 +48,7 @@ cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # set threshold for this model
 cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
 cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
 cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512 #128
-
+'''
 predictor = DefaultPredictor(cfg)
 outputs = predictor(im)
 
@@ -62,3 +62,4 @@ v = Visualizer(im[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMA
                 scale=1.2)
 out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
 st.image(out.get_image()[:, :, ::-1])
+'''
