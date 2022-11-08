@@ -11,7 +11,7 @@ from detectron2.utils.visualizer import Visualizer, ColorMode
 from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.data.catalog import Metadata
 from PIL import Image, ImageOps
-'''
+''''''
 # Detectron2 Setup Logger
 setup_logger()
 
@@ -83,4 +83,4 @@ else:
                     scale=1.2)
     out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
     st.image(out.get_image()[:, :, ::-1])
-'''
+''''''
