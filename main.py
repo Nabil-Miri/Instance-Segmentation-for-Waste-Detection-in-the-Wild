@@ -83,6 +83,8 @@ else:
     st.write(cats)
     st.write(outputs["instances"].pred_boxes)
     st.write(outputs["instances"].scores)
+    st.write('Height:', outputs["instances"].image_height)
+    st.write('Width:', outputs["instances"].image_width)
 
     st.write('Using Vizualizer to draw the predictions on Image')
 
