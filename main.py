@@ -28,7 +28,7 @@ st.image('assets/img.png')
 # import some common detectron2 utilities
 
 st.write('\n')
-
+'''
 st.title('Testing the Zoo Model')
 st.write('Test image')
 im = cv2.imread("assets/test.JPG")
@@ -48,7 +48,7 @@ cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # set threshold for this model
 cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
 cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
 cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512 #128
-'''
+
 predictor = DefaultPredictor(cfg)
 outputs = predictor(im)
 
