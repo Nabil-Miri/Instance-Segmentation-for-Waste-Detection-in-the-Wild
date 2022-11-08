@@ -82,7 +82,7 @@ else:
     st.write(outputs["instances"].pred_classes)
     st.write(cats)
     st.write(outputs["instances"].pred_boxes)
-    st.write(outputs.keys())
+    st.write(outputs["instances"].keys())
 
     st.write('Using Vizualizer to draw the predictions on Image')
 
