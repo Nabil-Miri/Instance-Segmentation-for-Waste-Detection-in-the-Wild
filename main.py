@@ -70,22 +70,22 @@ st.image(out.get_image()[:, :, ::-1])
 # Upload images
 st.write('Upload image')
 upload = st.file_uploader("Please upload an image", type=["jpg","png", "jpeg", "heif"])
-if upload is None:
-    st.text("Please upload an image")
-else:
-    image = Image.open(upload)
-    st.image(image, use_column_width=True)
-    img_array = np.array(image)
-    outputs = predictor(img_array)
-
-    st.write('Writing pred_classes/pred_boxes output ===============')
-    st.write(outputs["instances"].pred_classes)
-    st.write(outputs["instances"].pred_boxes)
-
-    st.write('Using Vizualizer to draw the predictions on Image')
-
-    v = Visualizer(img_array[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMAGE_BW, # removes the colors of unsegmented pixels
-                    scale=1.2)
-    out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
-    st.image(out.get_image()[:, :, ::-1])
+# if upload is None:
+#     st.text("Please upload an image")
+# else:
+#     image = Image.open(upload)
+#     st.image(image, use_column_width=True)
+#     img_array = np.array(image)
+#     outputs = predictor(img_array)
+#
+#     st.write('Writing pred_classes/pred_boxes output ===============')
+#     st.write(outputs["instances"].pred_classes)
+#     st.write(outputs["instances"].pred_boxes)
+#
+#     st.write('Using Vizualizer to draw the predictions on Image')
+#
+#     v = Visualizer(img_array[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMAGE_BW, # removes the colors of unsegmented pixels
+#                     scale=1.2)
+#     out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
+#     st.image(out.get_image()[:, :, ::-1])
 ''''''
