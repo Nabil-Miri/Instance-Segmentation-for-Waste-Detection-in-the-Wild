@@ -14,7 +14,7 @@ from detectron2.data.catalog import Metadata
 _dataset_metadata_train = MetadataCatalog.get('train')
 my_metadata = Metadata()
 my_metadata.set(thing_classes=['metals_and_plastics', 'other', 'non-recyclable', 'glass', 'paper', 'bio', 'unknown'])
-
+cats = ['metals_and_plastics', 'other', 'non-recyclable', 'glass', 'paper', 'bio', 'unknown']
 # print(torch.__version__, torch.cuda.is_available())
 # assert torch.__version__.startswith("1.8")
 
@@ -80,6 +80,7 @@ else:
 
     st.write('Writing pred_classes/pred_boxes output ===============')
     st.write(outputs["instances"].pred_classes)
+    st.write(cats)
     st.write(outputs["instances"].pred_boxes)
 
     st.write('Using Vizualizer to draw the predictions on Image')
