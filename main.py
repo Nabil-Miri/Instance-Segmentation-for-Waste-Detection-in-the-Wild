@@ -45,14 +45,14 @@ cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rc
 cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # set threshold for this model
 # #Find a model from detectron2's model zoo. You can use the https://dl.fbaipublicfiles... url as well
 ##cfg.MODEL.WEIGHTS = model_zoo.get_checkpoint_url("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml")
-#cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
-#cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
-#cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512 #128
+cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
+cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
+cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512 #128
 
 #predictor = DefaultPredictor(cfg)
 #outputs = predictor(im)
 
-st.write('Writing pred_classes/pred_boxes output')
+st.write('Writing pred_classes/pred_boxes output ===============')
 #st.write(outputs["instances"].pred_classes)
 #st.write(outputs["instances"].pred_boxes)
 
