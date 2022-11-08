@@ -11,14 +11,14 @@ from detectron2.utils.visualizer import Visualizer, ColorMode
 from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.data.catalog import Metadata
 ''''''
-#_dataset_metadata_train = MetadataCatalog.get('train')
-#my_metadata = Metadata()
-#my_metadata.set(thing_classes=['metals_and_plastics', 'other', 'non-recyclable', 'glass', 'paper', 'bio', 'unknown'])
+_dataset_metadata_train = MetadataCatalog.get('train')
+my_metadata = Metadata()
+my_metadata.set(thing_classes=['metals_and_plastics', 'other', 'non-recyclable', 'glass', 'paper', 'bio', 'unknown'])
 
 # print(torch.__version__, torch.cuda.is_available())
 # assert torch.__version__.startswith("1.8")
 
-#setup_logger()
+setup_logger()
 
 st.title('Deploying a Pytorch model on Streamlit | Detectron2')
 st.write('What is Detectron2?')
