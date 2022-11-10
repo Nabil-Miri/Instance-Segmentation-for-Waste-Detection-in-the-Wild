@@ -8,21 +8,3 @@ streamlit
 detectron2
 
 opencv-contrib-python-headless
-
-
-
-#opencv-contrib-python==4.5.5.62
-
-#fvcore
-#cloudpickle
-#omegaconf
-
-#Cython
-#git+https://github.com/waleedka/coco.git#egg=pycocotools&subdirectory=PythonAPI
-
-# git+https://github.com/facebookresearch/detectron2.git #detectron2
-
-#=======
-#--extra-index-url https://dl.fbaipublicfiles.com/detectron2/wheels/cu113/torch1.10/index.html
-#opencv-contrib-python-headless
-#>>>>>>> 780039030919de911deda37987588dc39597ce38
