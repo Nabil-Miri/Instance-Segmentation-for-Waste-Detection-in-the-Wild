@@ -12,8 +12,51 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.data.catalog import Metadata
 from PIL import Image, ImageOps
 ''''''
+
+@st.cache(persist=True)
+def initialization():
+    """Loads configuration and model for the prediction.
+
+    Returns:
+        cfg (detectron2.config.config.CfgNode): Configuration for the model.
+        predictor (detectron2.engine.defaults.DefaultPredicto): Model to use.
+            by the model.
+
+    """
+    # Import some common detectron2 utilities
+    NUM_CLASSES = 7
+    # Then, we create a detectron2 config and a detectron2 `DefaultPredictor` to run inference on this image.
+    cfg = get_cfg()
+    cfg.MODEL.DEVICE = "cpu"
+    cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
+    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # set threshold for this model
+    cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
+    # Custom Trained Model
+    cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
+    cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512  # 128
+
+    # minimum image size for the train set
+    cfg.INPUT.MIN_SIZE_TRAIN = (800,)
+    # maximum image size for the train set
+    cfg.INPUT.MAX_SIZE_TRAIN = 1333
+    # minimum image size for the test set
+    cfg.INPUT.MIN_SIZE_TEST = 800
+    # maximum image size for the test set
+    cfg.INPUT.MAX_SIZE_TEST = 1333
+
+    # Predictor
+    predictor = DefaultPredictor(cfg)
+
+    return cfg, predictor
+
+
+@st.cache
+def inference(predictor, img):
+    return predictor(img)
+
 # Detectron2 Setup Logger
 setup_logger()
+
 
 # Detectron2 Metadata
 my_metadata = Metadata()
@@ -31,32 +74,7 @@ st.write('\n')
 # # showing image
 # st.image('assets/test.JPG')
 
-def load_model():
-    cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
 
-# Import some common detectron2 utilities
-NUM_CLASSES = 7
-#Then, we create a detectron2 config and a detectron2 `DefaultPredictor` to run inference on this image.
-cfg = get_cfg()
-cfg.MODEL.DEVICE = "cpu"
-cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
-cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # set threshold for this model
-cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
-# Custom Trained Model
-load_model()
-cfg.MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE = 512 #128
-
-# minimum image size for the train set
-cfg.INPUT.MIN_SIZE_TRAIN = (800,)
-# maximum image size for the train set
-cfg.INPUT.MAX_SIZE_TRAIN = 1333
-# minimum image size for the test set
-cfg.INPUT.MIN_SIZE_TEST = 800
-# maximum image size for the test set
-cfg.INPUT.MAX_SIZE_TEST = 1333
-
-# Predictor
-predictor = DefaultPredictor(cfg)
 
 ###
 # Upload images
@@ -69,6 +87,8 @@ else:
     image = Image.open(upload)
     st.image(image, use_column_width=True)
     img_array = np.array(image)
+    cfg, predictor = initialization()
+
     outputs = predictor(img_array)
 
     st.title('Prediction Outputs:')
