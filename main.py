@@ -54,6 +54,16 @@ def initialization():
 def inference(predictor, img):
     return predictor(img)
 
+@st.cache
+def output_image(img_array, outputs):
+    v = Visualizer(img_array[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMAGE_BW,
+                   # removes the colors of unsegmented pixels
+                   scale=1.2)
+    out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
+    processed_img = out.get_image()[:, :, ::-1]
+
+    return processed_img
+
 # Detectron2 Setup Logger
 setup_logger()
 
@@ -80,11 +90,9 @@ st.write('\n')
 # Upload images
 st.write('Upload image')
 upload = st.file_uploader("Please upload an image", type=["jpg","png", "jpeg", "heif"])
-if upload is None:
-    st.text("Please upload an image")
-else:
+if upload is not None:
     st.write('Image Uploaded:')
-    image = Image.open(upload)
+    image = Image.open(upload).convert('RGB')
     st.image(image, use_column_width=True)
     img_array = np.array(image)
     cfg, predictor = initialization()
@@ -99,8 +107,7 @@ else:
 
     st.write('Using Vizualizer to draw the predictions on Image')
 
-    v = Visualizer(img_array[:, :, ::-1], metadata=my_metadata, instance_mode=ColorMode.IMAGE_BW, # removes the colors of unsegmented pixels
-                    scale=1.2)
-    out = v.draw_instance_predictions(outputs["instances"].to("cpu"))
-    st.image(out.get_image()[:, :, ::-1])
+    out_image = output_image(img_array, outputs)
+    st.image(out_image, caption='Processed Image', use_column_width=True)
+
 ''''''
