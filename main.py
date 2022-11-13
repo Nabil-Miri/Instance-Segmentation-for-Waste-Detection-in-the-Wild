@@ -12,6 +12,37 @@ from detectron2.data import MetadataCatalog, DatasetCatalog
 from detectron2.data.catalog import Metadata
 from PIL import Image, ImageOps
 ''''''
+import time
+
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"]  {
+background-image: url("https://static-cse.canva.com/blob/573141/RainbowGradientPinkandPurpleZoomVirtualBackground.jpg");
+background-size: cover;
+background-position: top left;
+background-repeat: no-repeat;
+}
+[data-testid="stHeader"] {
+background: rgba(0,0,0,0);
+background-image: url("https://zaka.ai/wp-content/uploads/2022/03/logo-black.png");
+background-size: 10%;
+background-repeat: no-repeat;
+margin-top: 20px;
+left: 0.2cm;
+}
+[data-testid="stDecoration"] {
+position: absolute;
+    top: -100px;
+    right: 0px;
+    left: 0px;
+    height: 0.125rem;
+    z-index: 999990;
+}
+</style>
+"""
+
+st.markdown(page_bg_img, unsafe_allow_html=True)
+
 
 @st.cache(persist=True)
 def initialization():
