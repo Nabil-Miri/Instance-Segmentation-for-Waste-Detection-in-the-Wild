@@ -60,7 +60,8 @@ def initialization():
     cfg = get_cfg()
     cfg.MODEL.DEVICE = "cpu"
     cfg.merge_from_file(model_zoo.get_config_file("COCO-InstanceSegmentation/mask_rcnn_R_50_FPN_3x.yaml"))
-    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = 0.3  # set threshold for this model
+    cfg.MODEL.ROI_HEADS.SCORE_THRESH_TEST = slider
+      # set threshold for this model
     cfg.MODEL.ROI_HEADS.NUM_CLASSES = NUM_CLASSES
     # Custom Trained Model
     cfg.MODEL.WEIGHTS = os.path.join("model_final.pth")
@@ -119,6 +120,7 @@ st.write('\n')
 
 ###
 # Upload images
+slider = st.slider('Choose Threshold for the Detection', min_value=0.0, max_value=1.0, value=0.4, step=0.1)
 st.write('Upload image')
 upload = st.file_uploader("Please upload an image", type=["jpg","png", "jpeg", "heif"])
 if upload is not None:
