@@ -4,3 +4,6 @@
 
 ## Downlaod Dataset:
 Either from here: https://zenodo.org/record/3587843#.Y4xym3bMJPY or from the download.py file in the TACO main repo: https://github.com/pedropro/TACO
+
+## Report:
+You can find more info in this report: https://github.com/Nabil-Miri/mystreamlit/blob/main/Short%20Report/Milestone%203.pdf
