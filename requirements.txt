@@ -6,7 +6,7 @@ opencv-contrib-python-headless
 
 # -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu118/torch2.0/index.html
 # detectron2==0.2.1+cpu
- detectron2==0.6
+# detectron2==0.6
 
 torch==1.8.0
 torchvision==0.9.0
