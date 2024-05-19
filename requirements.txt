@@ -1,10 +1,8 @@
 pyyaml==5.1
-torch==1.9.0
-torchvision==0.10.0
+torch==2.1.0
+torchvision==0.12.0
 streamlit
-
--f https://dl.fbaipublicfiles.com/detectron2/wheels/cpu/torch1.9/index.html
-detectron2
-
 opencv-contrib-python-headless
-#git+https://github.com/facebookresearch/detectron2.git #detectron2
+
+-f https://dl.fbaipublicfiles.com/detectron2/wheels/cu118/torch2.1/index.html
+detectron2==0.6  # Specify a version compatible with torch 2.1.0
