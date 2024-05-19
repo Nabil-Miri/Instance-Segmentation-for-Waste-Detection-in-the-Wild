@@ -4,5 +4,6 @@ torchvision==0.15.2
 streamlit
 opencv-contrib-python-headless
 
--f https://dl.fbaipublicfiles.com/detectron2/wheels/cu118/torch2.0/index.html
-detectron2==0.6
+# -f https://dl.fbaipublicfiles.com/detectron2/wheels/cu118/torch2.0/index.html
+detectron2==0.2.1+cpu
+# detectron2==0.6
